@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hazlin & Co – Family & Matrimonial Law</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- EmailJS SDK -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary-black: #0a0a0a;
+      --soft-black: #1a1a1a;
+      --charcoal: #2a2a2a;
+      --steel: #3a3a3a;
+      --silver: #6a6a6a;
+      --light-silver: #9a9a9a;
+      --pearl: #e8e8e8;
+      --ivory: #f8f8f8;
+      --pure-white: #ffffff;
+      --gold-accent: #c8a882;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.6;
+      color: var(--primary-black);
+      background: var(--pure-white);
+      overflow-x: hidden;
+      font-weight: 300;
+    }
+
+    /* Exclusive Background Graphics */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.02;
+      z-index: -1;
+      background-image: 
+        radial-gradient(circle at 20% 80%, var(--charcoal) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, var(--steel) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, var(--silver) 0%, transparent 50%);
+    }
+
+    .legal-pattern {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0.015;
+      background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='1'%3E%3Cpath d='M40 40c0-14.727 11.929-26.667 26.667-26.667S93.333 25.273 93.333 40 81.404 66.667 66.667 66.667 40 54.727 40 40zm0-26.667C40 25.273 28.071 13.333 13.333 13.333S-13.333 25.273-13.333 40s11.929 26.667 26.667 26.667S40 54.727 40 13.333z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .serif-font {
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    header {
+      position: relative;
+      background: linear-gradient(135deg, rgba(10, 10, 10, 0.9) 0%, rgba(26, 26, 26, 0.9) 100%), 
+                  url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover;
+      color: var(--pure-white);
+      padding: 6rem 2rem;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '⚖';
+      position: absolute;
+      font-size: 280px;
+      opacity: 0.03;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+      font-weight: 100;
+    }
+
+    header::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Cpath d='M20,20 L100,20 L100,100 L20,100 Z' fill='none' stroke='%23ffffff' stroke-width='0.3' opacity='0.02'/%3E%3Cpath d='M30,30 L90,30 L90,90 L30,90 Z' fill='none' stroke='%23ffffff' stroke-width='0.2' opacity='0.03'/%3E%3Cpath d='M40,40 L80,40 L80,80 L40,80 Z' fill='none' stroke='%23ffffff' stroke-width='0.1' opacity='0.04'/%3E%3C/svg%3E") repeat;
+      z-index: 1;
+    }
+
+    .logo-container {
+      position: relative;
+      z-index: 2;
+      margin-bottom: 2rem;
+    }
+
+    .logo-container svg {
+      width: 200px;
+      height: auto;
+      margin-bottom: 1rem;
+    }
+
+    header h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 4.5rem;
+      font-weight: 300;
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 2;
+      letter-spacing: 0.02em;
+      line-height: 1.1;
+    }
+
+    header p {
+      font-size: 1.125rem;
+      opacity: 0.85;
+      position: relative;
+      z-index: 2;
+      font-weight: 300;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-size: 0.95rem;
+    }
+
+    nav {
+      background: rgba(10, 10, 10, 0.98);
+      backdrop-filter: blur(20px);
+      padding: 1.25rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--charcoal);
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: center;
+      gap: 4rem;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .nav-container a {
+      color: var(--light-silver);
+      text-decoration: none;
+      font-weight: 400;
+      padding: 0.75rem 1.5rem;
+      border-radius: 2px;
+      transition: all 0.4s ease;
+      position: relative;
+      letter-spacing: 0.025em;
+      font-size: 0.95rem;
+    }
+
+    .nav-container a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 1px;
+      background: var(--pure-white);
+      transition: all 0.4s ease;
+      transform: translateX(-50%);
+    }
+
+    .nav-container a:hover {
+      color: var(--pure-white);
+      transform: translateY(-1px);
+    }
+
+    .nav-container a:hover::after {
+      width: 100%;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    section {
+      padding: 5rem 0;
+      position: relative;
+    }
+
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.25rem;
+      font-weight: 400;
+      color: var(--primary-black);
+      margin-bottom: 3rem;
+      position: relative;
+      letter-spacing: -0.01em;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -1rem;
+      left: 0;
+      width: 80px;
+      height: 1px;
+      background: var(--primary-black);
+    }
+
+    .intro-section {
+      background: linear-gradient(135deg, rgba(248, 248, 248, 0.95) 0%, rgba(232, 232, 232, 0.95) 100%),
+                  url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover;
+      margin: 3rem 0;
+      padding: 4rem;
+      border: 1px solid var(--pearl);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .intro-section::before {
+      content: '§';
+      position: absolute;
+      font-size: 160px;
+      color: var(--primary-black);
+      opacity: 0.02;
+      top: 20px;
+      right: 40px;
+      font-weight: 100;
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    .intro-section p {
+      font-size: 1.25rem;
+      color: var(--charcoal);
+      line-height: 1.8;
+      font-weight: 300;
+      max-width: 900px;
+    }
+
+    .founder-section {
+      background: var(--pure-white);
+      padding: 4rem;
+      margin: 3rem 0;
+      border: 1px solid var(--pearl);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .founder-grid {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .founder-image {
+      width: 300px;
+      height: 400px;
+      border-radius: 8px;
+      object-fit: cover;
+      border: 3px solid var(--pearl);
+    }
+
+    .mission-vision {
+      background: linear-gradient(135deg, rgba(200, 168, 130, 0.1) 0%, rgba(200, 168, 130, 0.05) 100%);
+      padding: 3rem;
+      margin: 3rem 0;
+      border-left: 4px solid var(--gold-accent);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2.5rem;
+      margin-top: 3rem;
+    }
+
+    .service-card {
+      background: var(--pure-white);
+      padding: 3rem;
+      border: 1px solid var(--pearl);
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--primary-black);
+      transform: scaleX(0);
+      transition: transform 0.4s ease;
+      transform-origin: left;
+    }
+
+    .service-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 40px -10px rgba(0, 0, 0, 0.1);
+      border-color: var(--silver);
+    }
+
+    .service-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      color: var(--primary-black);
+      font-size: 1.75rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+      letter-spacing: -0.01em;
+    }
+
+    .service-card p {
+      color: var(--steel);
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    .service-list {
+      list-style: none;
+      margin-top: 1rem;
+    }
+
+    .service-list li {
+      color: var(--steel);
+      font-weight: 300;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--pearl);
+      position: relative;
+      padding-left: 1.5rem;
+    }
+
+    .service-list li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--gold-accent);
+      font-weight: 500;
+    }
+
+    .fees-section {
+      background: linear-gradient(135deg, rgba(10, 10, 10, 0.95) 0%, rgba(26, 26, 26, 0.95) 100%),
+                  url('https://images.unsplash.com/photo-1521587760476-6c12a4b040da?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover;
+      color: var(--pure-white);
+      padding: 5rem;
+      margin: 3rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .fees-section::before {
+      content: '$';
+      position: absolute;
+      font-size: 200px;
+      opacity: 0.03;
+      top: 30px;
+      right: 50px;
+      font-weight: 100;
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    .fees-section h2 {
+      color: var(--pure-white);
+    }
+
+    .fees-section h2::after {
+      background: var(--pure-white);
+    }
+
+    .fee-item {
+      background: rgba(255, 255, 255, 0.03);
+      padding: 2rem;
+      margin: 1.5rem 0;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .fee-item:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .fee-item strong {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      display: block;
+      margin-bottom: 0.75rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }
+
+    .fee-item span {
+      font-weight: 300;
+      opacity: 0.9;
+    }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 3rem;
+      margin: 3rem 0;
+    }
+
+    .step {
+      background: var(--pure-white);
+      padding: 3rem;
+      border: 1px solid var(--pearl);
+      position: relative;
+      text-align: center;
+      transition: all 0.4s ease;
+    }
+
+    .step:hover {
+      border-color: var(--primary-black);
+      box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.08);
+    }
+
+    .step-number {
+      background: var(--primary-black);
+      color: var(--pure-white);
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 300;
+      margin: 0 auto 2rem;
+      font-size: 1.5rem;
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    .step h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+      color: var(--primary-black);
+      letter-spacing: -0.01em;
+    }
+
+    .step p {
+      color: var(--steel);
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      background: var(--primary-black);
+      color: var(--pure-white);
+      padding: 1.25rem 3rem;
+      text-decoration: none;
+      font-weight: 400;
+      transition: all 0.4s ease;
+      margin-top: 3rem;
+      border: 2px solid var(--primary-black);
+      letter-spacing: 0.025em;
+      font-size: 0.95rem;
+    }
+
+    .btn:hover {
+      background: var(--pure-white);
+      color: var(--primary-black);
+      transform: translateY(-2px);
+      box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.15);
+    }
+
+    .contact-section {
+      background: linear-gradient(135deg, rgba(248, 248, 248, 0.95) 0%, rgba(232, 232, 232, 0.95) 100%),
+                  url('https://images.unsplash.com/photo-1556075798-4825dfaaf498?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80') center/cover;
+      padding: 5rem;
+      margin: 3rem 0;
+      position: relative;
+      border: 1px solid var(--pearl);
+    }
+
+    .contact-section::before {
+      content: '☎';
+      position: absolute;
+      font-size: 140px;
+      opacity: 0.02;
+      top: 40px;
+      right: 50px;
+      font-weight: 100;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.5rem;
+      margin-top: 3rem;
+    }
+
+    .contact-item {
+      background: var(--pure-white);
+      padding: 2.5rem;
+      border: 1px solid var(--pearl);
+      border-left: 3px solid var(--primary-black);
+      transition: all 0.3s ease;
+    }
+
+    .contact-item:hover {
+      border-left-width: 5px;
+      transform: translateX(5px);
+    }
+
+    .contact-item strong {
+      font-family: 'Cormorant Garamond', serif;
+      color: var(--primary-black);
+      display: block;
+      margin-bottom: 0.75rem;
+      font-size: 1.25rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }
+
+    .contact-item span {
+      color: var(--steel);
+      font-weight: 300;
+      line-height: 1.6;
+    }
+
+    /* Contact Form Styles */
+    .contact-form-section {
+      margin-top: 4rem;
+    }
+
+    .contact-form-section h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 500;
+      color: var(--primary-black);
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .contact-form-container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    #contactForm {
+      background: var(--pure-white);
+      padding: 3rem;
+      border: 1px solid var(--pearl);
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: var(--primary-black);
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 1rem;
+      border: 1px solid var(--pearl);
+      border-radius: 4px;
+      font-family: inherit;
+      color: var(--primary-black);
+      background: var(--pure-white);
+      transition: all 0.3s ease;
+      font-size: 0.95rem;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary-black);
+      box-shadow: 0 0 0 2px rgba(10, 10, 10, 0.1);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .checkbox-group {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+    }
+
+    .checkbox-group input[type="checkbox"] {
+      margin-top: 0.1rem;
+      width: auto;
+    }
+
+    .checkbox-group label {
+      cursor: pointer;
+      color: var(--steel);
+      font-size: 0.9rem;
+      line-height: 1.4;
+      margin-bottom: 0;
+    }
+
+    .submit-btn {
+      width: 100%;
+      background: var(--primary-black);
+      color: var(--pure-white);
+      padding: 1.25rem 2rem;
+      border: none;
+      border-radius: 4px;
+      font-family: inherit;
+      font-weight: 500;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      letter-spacing: 0.025em;
+    }
+
+    .submit-btn:hover {
+      background: var(--soft-black);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    #formMessage {
+      margin-top: 1rem;
+      padding: 1rem;
+      border-radius: 4px;
+      display: none;
+    }
+
+    footer {
+      background: var(--primary-black);
+      color: var(--light-silver);
+      text-align: center;
+      padding: 3rem;
+      margin-top: 5rem;
+      font-weight: 300;
+      letter-spacing: 0.025em;
+      font-size: 0.9rem;
+    }
+
+    .highlight {
+      background: linear-gradient(135deg, var(--ivory), var(--pearl));
+      padding: 1.5rem;
+      border-left: 3px solid var(--primary-black);
+      margin: 2rem 0;
+      position: relative;
+      font-weight: 300;
+      font-style: italic;
+    }
+
+    .highlight::before {
+      content: '⚠';
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      opacity: 0.15;
+      font-size: 1.5rem;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 3rem;
+      }
+      
+      .nav-container {
+        flex-wrap: wrap;
+        gap: 1.5rem;
+      }
+      
+      h2 {
+        font-size: 2.5rem;
+      }
+      
+      .intro-section,
+      .fees-section,
+      .contact-section,
+      .founder-section {
+        padding: 3rem 2rem;
+      }
+
+      .founder-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .services-grid,
+      .process-steps {
+        grid-template-columns: 1fr;
+      }
+      
+      #contactForm {
+        padding: 2rem !important;
+      }
+      
+      .form-row {
+        grid-template-columns: 1fr !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="legal-pattern"></div>
+  
+  <header>
+    <div class="container">
+      <div class="logo-container">
+        <img src="logo.png" alt="Hazlin & Co - Advocates and Solicitors" style="max-width: 400px; height: auto; margin-bottom: 1rem;">
+      </div>
+      <p>Family & Matrimonial Law Specialists</p>
+    </div>
+  </header>
+
+  <nav>
+    <div class="nav-container">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#fees">Fees</a>
+      <a href="#process">Our Process</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <section id="about">
+      <div class="intro-section">
+        <h2>About Hazlin & Co</h2>
+        <p>Hazlin & Co. is a boutique law firm situated in an affluent township in Petaling Jaya, Selangor, located within 10 km radius of major townships such as Mutiara Damansara, Bandar Sri Damansara, Taman Tun Dr. Ismail, Bandar Utama, Damansara Utama and Damansara Jaya. The Firm is established by a team of lawyers who are passionate about bringing justice to clients and upholding the law, providing a wide range of legal services accommodated to all kinds of legal issues, matters and disputes commonly faced by individuals, public and private sectors.</p>
+      </div>
+      
+      <div class="founder-section">
+        <h2>Meet Our Founder</h2>
+        <div class="founder-grid">
+          <div>
+            <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 500; color: var(--primary-black); margin-bottom: 1.5rem;">Nurul Balqis binti Hazlin</h3>
+            <p style="color: var(--steel); font-weight: 300; line-height: 1.7; margin-bottom: 1.5rem;">Nurul Balqis binti Hazlin is the founder of Messrs. Hazlin & Co. She obtained her Bachelor of Laws (LLB) (Hons) from the International Islamic University Malaysia (IIUM) and was admitted as an Advocate and Solicitor of the High Court of Malaya in April 2019.</p>
+            <p style="color: var(--steel); font-weight: 300; line-height: 1.7; margin-bottom: 1.5rem;">She commenced her legal career handling banking litigation, fraud cases, winding-up proceedings, intrusion onto land, and conveyancing matters. During her attachment and pupillage, she gained extensive experience in various areas of law including commercial litigation, debt recovery, and property transactions.</p>
+            <p style="color: var(--steel); font-weight: 300; line-height: 1.7;">As founder of the firm, she handles various litigation matters including Commercial and Contractual Disputes, Debt Recovery, Family or Matrimonial Proceedings, Insurance matters, and other general litigation and corporate matters. Apart from litigation, she deals with conveyancing matters such as Property Transactions, applying for Letter of Administration and Grant of Probate, drafting of Tenancy Agreements, wills, and other comprehensive legal services tailored to client needs.</p>
+          </div>
+          <div>
+            <img src="founder.jpeg" 
+                 alt="Nurul Balqis binti Hazlin - Founder" 
+                 class="founder-image">
+          </div>
+        </div>
+      </div>
+
+      <div class="mission-vision">
+        <h2>Our Mission & Vision</h2>
+        <p style="color: var(--charcoal); font-weight: 300; line-height: 1.7; margin-bottom: 1.5rem;">The Firm dedicates in providing legal advices and services in various law areas. The Firm listens carefully to clients and draws broad practice capabilities, in-depth knowledge and diverse industry expertise to provide thoughtful advice, creative and a results-driven solution.</p>
+        <p style="color: var(--charcoal); font-weight: 300; line-height: 1.7;">Our team members are committed to provide professionalism, integrity, quality and social responsibilities. We believe that these core values enable our clients to achieve their goals as we are committed by delivering efficient and cost-effective legal services with a focus on communication, responsiveness and attention to detail to all our clients.</p>
+      </div>
+    </section>
+
+    <section id="services">
+      <h2>Our Services</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <h3>Litigation</h3>
+          <p>Comprehensive litigation services covering various legal disputes and court proceedings.</p>
+          <ul class="service-list">
+            <li>Personal Injury/Accident Claims</li>
+            <li>Divorce/Custody/Matrimonial/Family Law</li>
+            <li>Breach of Contracts</li>
+            <li>Defamation (Libel & Slander)</li>
+            <li>Negligence Claims</li>
+            <li>Debt Recovery/Fraud</li>
+          </ul>
+        </div>
+        
+        <div class="service-card">
+          <h3>Conveyancing & Real Estate</h3>
+          <p>Expert property transaction services and real estate legal solutions.</p>
+          <ul class="service-list">
+            <li>Transfer of Property</li>
+            <li>Sale and Purchase Agreements</li>
+            <li>Perfection of Transfer and Charge</li>
+            <li>Discharge of Charge</li>
+            <li>Deed of Receipt and Reassignment</li>
+            <li>Loan Agreement</li>
+            <li>Lease/Tenancy Agreements</li>
+          </ul>
+        </div>
+        
+        <div class="service-card">
+          <h3>Corporate Matters</h3>
+          <p>Comprehensive corporate legal services for businesses of all sizes.</p>
+          <ul class="service-list">
+            <li>Investment Agreement</li>
+            <li>Public Listing/Shares</li>
+            <li>Shareholder Agreements</li>
+            <li>Company Policies</li>
+            <li>Partnership Agreements</li>
+            <li>Non-disclosure Agreement (NDA)</li>
+            <li>Sales of Goods Agreement</li>
+            <li>Supply of Goods and Services Agreement</li>
+            <li>Agency Agreement</li>
+            <li>Independent Contract Agreement</li>
+            <li>Distributorship & Franchise Agreement</li>
+          </ul>
+        </div>
+        
+        <div class="service-card">
+          <h3>Will, Probate & Administration</h3>
+          <p>Estate planning and administration services for individuals and families.</p>
+          <ul class="service-list">
+            <li>Letter of Administration/Probate (Muslims and Non-Muslims)</li>
+            <li>Distribution Order</li>
+            <li>Order For Sale</li>
+            <li>Hibah</li>
+            <li>Faraid</li>
+            <li>Will Drafting</li>
+            <li>Estate Planning</li>
+          </ul>
+        </div>
+        
+        <div class="service-card">
+          <h3>Criminal Law</h3>
+          <p>Criminal defense and legal representation for various criminal matters.</p>
+          <ul class="service-list">
+            <li>Criminal Defense</li>
+            <li>Legal Representation</li>
+            <li>Criminal Appeals</li>
+            <li>Bail Applications</li>
+          </ul>
+        </div>
+        
+        <div class="service-card">
+          <h3>Additional Services</h3>
+          <p>Specialized legal services to meet diverse client needs.</p>
+          <ul class="service-list">
+            <li>Issuing Letter of Demand (LOD)</li>
+            <li>Legal Consultation</li>
+            <li>Document Review</li>
+            <li>Legal Advisory Services</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="fees">
+      <div class="fees-section">
+        <h2>Legal Fees</h2>
+        <p style="margin-bottom: 2rem; opacity: 0.9; font-weight: 300;">We offer transparent and competitive fees with no hidden costs. Our fee structure is designed to provide value while ensuring quality legal representation:</p>
+        <div class="fee-item">
+          <strong>Mutual Consent Divorce</strong>
+          <span>RM 4,000 – RM 6,000</span>
+        </div>
+        <div class="fee-item">
+          <strong>Contested Divorce</strong>
+          <span>RM 6,000 – RM 10,000+</span>
+        </div>
+        <div class="fee-item">
+          <strong>Legal Consultation</strong>
+          <span>Competitive rates based on complexity</span>
+        </div>
+        <div class="fee-item">
+          <strong>Property Transactions</strong>
+          <span>Based on property value and transaction type</span>
+        </div>
+        <div class="highlight">
+          All fees are subject to complexity, jurisdiction, and specific case requirements. Initial consultation fees may apply. We provide detailed fee estimates after initial consultation to ensure transparency and no surprises.
+        </div>
+      </div>
+    </section>
+
+    <section id="process">
+      <h2>Our Legal Process</h2>
+      <p style="color: var(--steel); font-weight: 300; margin-bottom: 2rem; font-size: 1.125rem;">Our streamlined approach ensures efficient and effective legal representation:</p>
+      <div class="process-steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3>Initial Consultation</h3>
+          <p>Comprehensive review of your situation, legal options, and tailored strategy development. We listen carefully to understand your needs and provide expert advice.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3>Case Analysis & Planning</h3>
+          <p>Thorough legal analysis of your case, identification of key issues, and development of a strategic approach to achieve the best possible outcome.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3>Documentation & Preparation</h3>
+          <p>Meticulous preparation of all required legal documents, agreements, and court filings with attention to detail and legal precision.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <h3>Execution & Representation</h3>
+          <p>Professional execution of legal strategy, court representation, negotiations, and ongoing support throughout the legal process.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">5</div>
+          <h3>Final Resolution</h3>
+          <p>Completion of all legal formalities, final documentation, and post-resolution support to ensure all matters are properly concluded.</p>
+        </div>
+      </div>
+      <p style="color: var(--steel); font-weight: 300; margin: 2rem 0; font-size: 1.125rem;">We guide our clients through every step with discretion, professionalism, and unwavering support, ensuring clear communication throughout the process.</p>
+      <a href="#contact" class="btn">Schedule Consultation →</a>
+    </section>
+
+    <section id="contact">
+      <div class="contact-section">
+        <h2>Contact Us</h2>
+        <p style="color: var(--steel); font-weight: 300; margin-bottom: 2rem; font-size: 1.125rem;">Ready to discuss your legal needs? Contact us for professional legal consultation and representation.</p>
+        <div class="contact-grid">
+          <div class="contact-item">
+            <strong>Office Location</strong>
+            <span>Empire Damansara SOHO 1, PJU 8/8,<br>Damansara Perdana, 47820 Petaling Jaya, Selangor</span>
+          </div>
+          <div class="contact-item">
+            <strong>Office Hours</strong>
+            <span>Monday – Friday<br>9:00 AM – 6:00 PM</span>
+          </div>
+          <div class="contact-item">
+            <strong>Phone</strong>
+            <span>+60 12-263 7287</span>
+          </div>
+          <div class="contact-item">
+            <strong>Email</strong>
+            <span>hazlinco@gmail.com</span>
+          </div>
+          <div class="contact-item">
+            <strong>Areas We Serve</strong>
+            <span>Petaling Jaya, Kuala Lumpur,<br>Selangor & surrounding areas</span>
+          </div>
+          <div class="contact-item">
+            <strong>Legal Inquiries</strong>
+            <span>For any legal and business inquiries, please contact us during office hours or send us an email for prompt response.</span>
+          </div>
+        </div>
+        
+        <div class="contact-form-section">
+          <h3>Get in Touch</h3>
+          <div class="contact-form-container">
+            <form id="contactForm">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="firstName">First Name *</label>
+                  <input type="text" id="firstName" name="firstName" required>
+                </div>
+                <div class="form-group">
+                  <label for="lastName">Last Name *</label>
+                  <input type="text" id="lastName" name="lastName" required>
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" name="email" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone">
+              </div>
+              
+              <div class="form-group">
+                <label for="legalService">Legal Service Required *</label>
+                <select id="legalService" name="legalService" required>
+                  <option value="">Please select a service</option>
+                  <option value="divorce-matrimonial">Divorce/Matrimonial Law</option>
+                  <option value="litigation">Litigation</option>
+                  <option value="conveyancing">Conveyancing & Real Estate</option>
+                  <option value="corporate">Corporate Matters</option>
+                  <option value="will-probate">Will, Probate & Administration</option>
+                  <option value="criminal">Criminal Law</option>
+                  <option value="consultation">Legal Consultation</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              
+              <div class="form-group">
+                <label for="message">Brief Description of Your Legal Matter *</label>
+                <textarea id="message" name="message" required rows="4" placeholder="Please provide a brief description of your legal matter..."></textarea>
+              </div>
+              
+              <div class="checkbox-group">
+                <input type="checkbox" id="privacy" name="privacy" required>
+                <label for="privacy">I agree to the privacy policy and consent to Hazlin & Co contacting me regarding my legal inquiry. All communications will be kept strictly confidential.</label>
+              </div>
+              
+              <button type="submit" class="submit-btn">Submit Inquiry</button>
+              
+              <div id="formMessage"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Hazlin & Co. All Rights Reserved. | Professional Legal Services | Advocates and Solicitors</p>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Initialize EmailJS
+      emailjs.init("JSG1noBY2F6EulVPv"); // Replace with your EmailJS public key
+      
+      // Smooth scrolling for navigation links
+      const navLinks = document.querySelectorAll("nav a");
+      navLinks.forEach(link => {
+        link.addEventListener("click", function (e) {
+          e.preventDefault();
+          const targetId = this.getAttribute("href").substring(1);
+          const target = document.getElementById(targetId);
+          if (target) {
+            window.scrollTo({
+              top: target.offsetTop - 100,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+
+      // Enhanced scroll effect for navigation
+      window.addEventListener('scroll', function() {
+        const nav = document.querySelector('nav');
+        if (window.scrollY > 100) {
+          nav.style.background = 'rgba(10, 10, 10, 0.99)';
+          nav.style.backdropFilter = 'blur(25px)';
+        } else {
+          nav.style.background = 'rgba(10, 10, 10, 0.98)';
+          nav.style.backdropFilter = 'blur(20px)';
+        }
+      });
+
+      // Subtle animations on scroll
+      const observeElements = document.querySelectorAll('.service-card, .step, .contact-item');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, { threshold: 0.1 });
+
+      observeElements.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(el);
+      });
+
+      // Contact form handling
+      const contactForm = document.getElementById('contactForm');
+      const formMessage = document.getElementById('formMessage');
+      const submitBtn = document.querySelector('.submit-btn');
+
+      // Form input focus effects
+      const formInputs = document.querySelectorAll('#contactForm input, #contactForm select, #contactForm textarea');
+      formInputs.forEach(input => {
+        input.addEventListener('focus', function() {
+          this.style.borderColor = 'var(--primary-black)';
+          this.style.boxShadow = '0 0 0 2px rgba(10, 10, 10, 0.1)';
+        });
+        
+        input.addEventListener('blur', function() {
+          this.style.borderColor = 'var(--pearl)';
+          this.style.boxShadow = 'none';
+        });
+      });
+
+      // Function to show message
+      function showMessage(message, type) {
+        formMessage.style.display = 'block';
+        formMessage.innerHTML = message;
+        
+        if (type === 'success') {
+          formMessage.style.background = '#d4edda';
+          formMessage.style.color = '#155724';
+          formMessage.style.border = '1px solid #c3e6cb';
+        } else if (type === 'error') {
+          formMessage.style.background = '#f8d7da';
+          formMessage.style.color = '#721c24';
+          formMessage.style.border = '1px solid #f5c6cb';
+        } else if (type === 'info') {
+          formMessage.style.background = '#d1ecf1';
+          formMessage.style.color = '#0c5460';
+          formMessage.style.border = '1px solid #bee5eb';
+        }
+        
+        formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+
+      contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Change button state to loading
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = 'Sending...';
+        submitBtn.disabled = true;
+        submitBtn.style.opacity = '0.7';
+        
+        // Get form data
+        const formData = new FormData(contactForm);
+        
+        // Prepare template parameters for EmailJS
+        const templateParams = {
+          from_name: `${formData.get('firstName')} ${formData.get('lastName')}`,
+          from_email: formData.get('email'),
+          phone: formData.get('phone') || 'Not provided',
+          legal_service: formData.get('legalService'),
+          message: formData.get('message'),
+          to_email: 'hazlinco@gmail.com'
+        };
+
+        // Send email using EmailJS
+        emailjs.send('service_p0wj3ig', 'template_lslbcps', templateParams)
+          .then(function(response) {
+            console.log('SUCCESS!', response.status, response.text);
+            showMessage(`
+              <strong>Thank you for your inquiry!</strong><br>
+              Your message has been sent successfully. We will contact you within 24 hours at ${templateParams.from_email}.
+            `, 'success');
+            
+            // Reset form
+            contactForm.reset();
+          })
+          .catch(function(error) {
+            console.log('FAILED...', error);
+            showMessage(`
+              <strong>Sorry, there was an error sending your message.</strong><br>
+              Please try again or contact us directly at hazlinco@gmail.com or +60 12-263 7287.
+            `, 'error');
+          })
+          .finally(function() {
+            // Reset button state
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+            submitBtn.style.opacity = '1';
+          });
+      });
+    });
+  </script>
+</body>
+</html>
