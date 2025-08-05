@@ -7,7 +7,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <!-- EmailJS SDK -->
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <style>
     * {
@@ -1028,7 +1027,7 @@
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       // Initialize EmailJS
-      emailjs.init("JSG1noBY2F6EulVPv"); // Replace with your EmailJS public key
+      emailjs.init("JSG1noBY2F6EulVPv"); 
       
       // Smooth scrolling for navigation links
       const navLinks = document.querySelectorAll("nav a");
@@ -1148,7 +1147,7 @@
               Your message has been sent successfully. We will contact you within 24 hours at ${templateParams.from_email}.
             `, 'success');
             
-            // Reset form
+
             contactForm.reset();
           })
           .catch(function(error) {
@@ -1159,7 +1158,6 @@
             `, 'error');
           })
           .finally(function() {
-            // Reset button state
             submitBtn.textContent = originalText;
             submitBtn.disabled = false;
             submitBtn.style.opacity = '1';
